@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+  Mercado Pago
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <form method="POST">
+      <div class="row mb-2">
+        <div class="col">
+          <label for="cliente" class="form-label" ><strong>Cliente:</strong></label>
+          <select class="form-select form-select-bg mb-2" aria-label=".form-select-bg example" id="cliente" name="cliente">
+            {% for c in clientes %}
+              <option value="{{ c }}">{{ c }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col">
+          <label for="sucursal" class="form-label"><strong>Sucursal:</strong></label>
+          <input min="0" max="1000" type="number" id="sucursal" name="sucursal" class="form-control" required/>        
+        </div>
+        <div class="col">
+          <label for="cajas" class="form-label"><strong>Cajas:</strong></label>
+          <input min="0" max="1000" type="number" id="cajas" name="cajas" class="form-control" required/>
+        </div>
+      </div>
+      <div class="d-grid gap-2 col-2 mx-auto mb-3">
+        <button class="btn btn-secondary" type="submit">Enviar</button>
+      </div>
+      {% if sucursal and cajas %}
+        <div class="row mb-2">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                Datos Solicitados
+              </div>
+              <div class="card-body row">
+                <h5 class="card-title">Insert de la Base de Datos</h5>
+                <p class="card-text">{{sucursal}} <br><br> {{cajas}}</p>
+                <a href="/mercado/download" class="btn btn-success col-2 mx-auto">Descargar Imágenes </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% elif mostrar_alerta %}
+        <div class="row mb-3" >
+          <div class="col-4 mx-auto">
+            <div class="alert alert-primary text-center" role="alert">
+              Sucursal o caja no definida... Click si desea ir a <a href="/" class="alert-link">Home</a>.
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </form>
+  </div
+{% endblock %}

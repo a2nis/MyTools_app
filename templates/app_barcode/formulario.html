@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Qr generator {% endblock %}
+
+{% block content %}
+  <div class="container-fluid"></div>
+    <form method="POST" enctype="multipart/form-data" action="/app_barcode/upload">
+      <div class="row mb-2">
+        <div class="col-6 mx-auto">
+          <label for="number" class="form-label"><strong>Introduce número de ticket:</strong></label>
+          <input min="0" type="number" id="number" name="number" class="form-control" />
+          <br>    
+        <div class="input-group">
+          <input type="file" name="file" id="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+          <button class="btn btn-secondary" type="submit" id="inputGroupFileAddon04">Procesar archivo</button>
+        </div>
+      </div>
+    </div>
+        {% if no_file  %}
+        <br>
+        <div class="row mb-3" >
+          <div class="col-6 mx-auto">
+            <div class="alert alert-primary text-center" role="alert">
+              No se ha seleccionado ningún archivo...
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% if no_ticket  %}
+        <br>
+        <div class="row mb-3" >
+          <div class="col-6 mx-auto">
+            <div class="alert alert-primary text-center" role="alert">
+              Ticket <b>{{number}}</b> no existe en el cstview...
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+    </form>
+  </div
+{% endblock %}
+

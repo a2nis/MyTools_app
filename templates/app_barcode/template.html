@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Barcode {% endblock %}
+
+{% block content %}
+  <button class="btn btn-secondary col-2" onclick="window.print()">Imprimir</button>
+  {% if mostrar_boton_video %}
+    <a href="/app_barcode/video" class="btn btn-secondary col-2 ">Descargar Video</a>
+  {% endif %}  
+  {% for ticket_number, ticket_data in tickets.items() %}
+    <p> <strong> Caja: {{ticket_data["cashier_code"]}} -- Ticket: {{ ticket_number}} -- Total a pagar: {{ticket_data["total_to_pay"]}}</strong></p>
+      {% for value in ticket_data["qr_code"] %}
+        <img src="/static/app_barcode/images/{{value}}.png" width="180" class="img-fluid img-thumbnail" alt={{value}}>
+      {% endfor %}
+  {% endfor %}
+  <br>
+{% endblock %}

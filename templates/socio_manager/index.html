@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %} Socio Manager {% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {{ form.csrf_token }}
+    <div class="col-6 mx-auto">
+      <strong>{{ form.no_socio.label(
+              class="form-label") }}</strong>
+      {{ form.no_socio(
+      class="form-control") }}
+
+    {% if form.no_socio.errors %}
+      <ul class="errors">
+          {% for error in form.no_socio.errors %}
+              <li style="color: red;">{{ error }}</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    <br>
+      <strong>{{ form.group.label(
+              class="form-label") }}</strong>
+      {{ form.group(rows=2, 
+      class="form-control") }}
+
+    {% if form.group.errors %}
+      <ul class="errors">
+          {% for error in form.group.errors %}
+              <li style="color: red;">{{ error }}</li>
+          {% endfor %}
+      </ul>
+    {% endif %}
+    </div>
+    <br>
+    <div class="d-grid gap-2 col-2 mx-auto mb-3">
+      <button class="btn btn-secondary" type="submit">Enviar</button>
+      </div>
+      {% if lista_grupos and concateno_socio != "" %}
+      <div class="row mx-auto mb-3  ">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              Datos Solicitados
+            </div>
+            <div class="card-body row">              
+                {% for i in lista_grupos %}
+                  <p class="card-text">INSERT INTO Grupos VALUES ("{{i}}", "tEST", 1.00, 200.00, "null", "A");</p>
+                {% endfor %}
+              <p class="card-text">{{concateno_socio}}</p>
+      {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </form>
+{% endblock %}

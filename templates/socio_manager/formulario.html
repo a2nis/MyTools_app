@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} Socio Manager {% endblock %}
+
+{% block content %}
+  <div class="container-fluid"></div>
+    <form method="POST" enctype="multipart/form-data" action="/app_barcode/upload">
+      <div class="row mb-2">
+        <div class="form-floating col-6 mx-auto">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+          <label for="floatingTextarea">Grupos Ej:  1,4,AB,6 </label>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto mb-3">
+          <button type="submit" class="btn btn-secondary">Enviar</button>
+        </div>
+      </div>
+      </div>
+    </form>
+  </div
+{% endblock %}
+
