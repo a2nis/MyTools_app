@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from home.home import home
 from mercado_pago.mercado import mercado
-from app_barcode.app_barcode import app_barcode
+#from app_barcode.app_barcode import app_barcode
 from socio_manager.socio_manager import socio_manager
 
 app = Flask(__name__)
